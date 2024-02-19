@@ -8,15 +8,15 @@
 
 Utworzenie nowego projektu
 
-**npm start**
+> ***npm start***
 Start lokalnego serwera 
 
-**npm run build**
+> ***npm run build***
 
 Utworzenie wersji gotowej do umieszczenia na docelowym serwerze. Pliki projektu będą dostępne w nowo utworzonym katalogu Build.
 
 ## Projekt został ostylowany z użyciem technologi scss
 
 ###### Przydatne polecenia:
-**npm install node-sass**
+> ***npm install node-sass***
 instaluje lokalnie sass/scss
