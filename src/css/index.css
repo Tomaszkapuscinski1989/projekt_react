@@ -1,0 +1,208 @@
+:root {
+  --bgColor1: hsl(156, 64%, 91%);
+  --bgColor2: hsl(156, 64%, 50%);
+
+  --textColor1: hsl(0, 10%, 0%);
+  --textColor2: hsl(0, 10%, 40%);
+
+  --fs-800: 24px;
+  --fs-600: 20px;
+  --fs-400: 16px;
+}
+
+body {
+  background: var(--bgColor2);
+  scroll-behavior: smooth;
+}
+
+header,
+footer {
+  background-color: var(--bgColor1);
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
+}
+
+:is(header, footer) a {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: var(--textColor1);
+  transform: scale(1);
+  transition: transform 1000ms;
+}
+
+:is(header, footer) a:hover,
+:is(header, footer) a:focus-visible {
+  transform: scale(1.5);
+  outline: transparent;
+  transition: transform 1000ms;
+}
+
+header h1,
+footer h2 {
+  font-size: 40px;
+  color: var(--textColor1);
+}
+
+main {
+  margin: 50px auto;
+  max-width: 1900px;
+  min-height: 60vh;
+}
+
+main :is(h2, h3) {
+  color: var(--textColor1);
+  font-size: var(--fs-800);
+  text-align: center;
+  line-height: 1.5em;
+  letter-spacing: 0.2em;
+  margin-top: 10px;
+  font-weight: 800;
+}
+
+main section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 750px) {
+  main section {
+    flex-direction: row;
+  }
+
+  main :is(h4, input, button) {
+    text-align: center;
+    flex-basis: 30%;
+  }
+}
+
+main :is(h4, input, button) {
+  color: var(--textColor1);
+  font-size: var(--fs-800);
+  border-radius: 20px;
+  line-height: 1.5em;
+  letter-spacing: 0.2em;
+  margin-top: 10px;
+  font-weight: 800;
+  flex-basis: 100%;
+}
+
+.button {
+  text-align: center;
+  border: 5px solid var(--bgColor1);
+  background-color: transparent;
+  border-radius: 20px;
+  color: var(--textColor1);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color 1000ms, border-color 1000ms;
+}
+
+.button:focus-visible,
+.button:hover {
+  border-color: var(--bgColor1);
+  outline: transparent;
+  transition: color 1000ms, border-color 1000ms;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background: var(--bgColor1);
+  width: 10%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  inset: 0;
+  margin: auto;
+  opacity: 0;
+  transform: scale(1);
+  transition: transform 1000ms, opacity 1000ms;
+}
+
+.button:focus-visible::before,
+.button:hover::before {
+  transform: scale(20);
+  opacity: 1;
+  transition: transform 1000ms, opacity 500ms;
+}
+
+.button1::before {
+  content: '';
+  transition: transform 1500ms, opacity 2000ms;
+}
+
+.button1:focus-visible::before,
+.button1:hover::before {
+  transition: transform 2000ms, opacity 1000ms;
+}
+
+.Bookshelf {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0 50px;
+  max-width: 1900px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.Book {
+  background-color: var(--bgColor1);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  flex-basis: 95%;
+}
+
+.Book img {
+  width: 90%;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+}
+
+.Book h4 {
+  color: var(--textColor1);
+  font-size: var(--fs-800);
+  text-align: center;
+  line-height: 1.5em;
+  letter-spacing: 0.2em;
+  margin-top: 10px;
+  font-weight: 800;
+}
+.Book h5 {
+  color: var(--textColor1);
+  font-size: var(--fs-600);
+  text-align: center;
+  line-height: 1.5em;
+  letter-spacing: 0.2em;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.Book h6 {
+  color: var(--textColor2);
+  font-size: var(--fs-400);
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1em;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 790px) {
+  .Book {
+    flex-basis: 45%;
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .Book {
+    flex-basis: 30%;
+  }
+}
