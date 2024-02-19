@@ -4,7 +4,7 @@
 
 ###### Przydatne polecenia:
 
-npx create-react-app my-app
+> ***npx create-react-app my-app***
 
 Utworzenie nowego projektu
 
