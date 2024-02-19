@@ -8,7 +8,7 @@
 
 Utworzenie nowego projektu
 
-`` ***npm start*** ``
+*** `` npm start `` ***
 
 Start lokalnego serwera 
 
