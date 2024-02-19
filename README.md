@@ -9,6 +9,7 @@
 Utworzenie nowego projektu
 
 > ***npm start***
+
 Start lokalnego serwera 
 
 > ***npm run build***
@@ -18,5 +19,7 @@ Utworzenie wersji gotowej do umieszczenia na docelowym serwerze. Pliki projektu 
 ## Projekt został ostylowany z użyciem technologi scss
 
 ###### Przydatne polecenia:
+
 > ***npm install node-sass***
+
 instaluje lokalnie sass/scss
