@@ -10,54 +10,93 @@ $fs-400: 16px;
 
 @import 'reset';
 
+@mixin link($fSize, $color) {
+  text-transform: uppercase;
+  font-size: $fSize;
+  color: $color;
+  transform: scale(1);
+  transition: transform 1000ms;
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.5);
+    outline: transparent;
+    transition: transform 1000ms;
+  }
+}
+
+header {
+  padding: 50px 50px;
+  background-color: $bgColor1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  a {
+    text-align: center;
+    @include link(40px, $textColor1);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    a {
+      // padding: 0;
+      // margin: 0;
+      @include link(20px, $textColor1);
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  header {
+    flex-direction: row;
+    a {
+      text-align: end;
+    }
+    nav {
+      a {
+        display: block;
+      }
+    }
+  }
+}
+
+nav {
+  display: flex;
+  margin: 20px 50px;
+  a {
+    margin-left: 50px;
+    @include link(20px, $textColor1);
+    &.red {
+      font-weight: 800;
+    }
+  }
+  &.navManga {
+    margin: 0;
+    padding: 20px;
+    border-top: 5px solid gold;
+    background-color: $bgColor1;
+  }
+}
+
+footer {
+  padding: 50px 0;
+  background-color: $bgColor1;
+  small {
+    font-size: 15px;
+    text-align: center;
+  }
+}
+
 body {
   background: $bgColor2;
   scroll-behavior: smooth;
 }
 
-header,
-footer {
-  background-color: $bgColor1;
-  width: 100%;
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 99;
-  h1 {
-    font-size: 40px;
-    color: $textColor1;
-    text-align: center;
-    padding: 20px;
-  }
-  a {
-    text-transform: uppercase;
-    font-size: 20px;
-    color: $textColor1;
-    transform: scale(1);
-    transition: transform 1000ms;
-    &:hover,
-    &:focus-visible {
-      transform: scale(1.5);
-      outline: transparent;
-      transition: transform 1000ms;
-    }
-  }
-}
-
-@media screen and (min-width: 1050px) {
-  header,
-  footer {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
 main {
   margin: 50px auto;
   max-width: 1900px;
-  min-height: 60vh;
+  min-height: 65vh;
   h2,
   h3 {
     color: $textColor1;
@@ -85,6 +124,111 @@ main {
     font-weight: 800;
     flex-basis: 100%;
   }
+  &.mainHomePage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-size: 50px;
+
+      line-height: 2;
+    }
+    p {
+      font-size: 20px;
+
+      line-height: 1.5;
+    }
+  }
+  &.BookMorePage {
+    margin: 0 auto 50px;
+
+    img {
+      margin: 0 auto;
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+    h2 {
+      font-size: 30px;
+      text-align: center;
+      line-height: 2;
+    }
+    h3 {
+      font-size: 25px;
+      text-align: center;
+      line-height: 2;
+    }
+    h4 {
+      font-size: 20px;
+      text-align: center;
+      line-height: 1.5;
+    }
+    h5 {
+      font-size: 20px;
+      text-align: center;
+      line-height: 1.5;
+    }
+  }
+  &.mainManga {
+    margin: 0 auto;
+    padding: 0 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      margin: 0 auto;
+      width: 50%;
+      aspect-ratio: 16/9;
+    }
+  }
+  &.manga {
+    display: flex;
+    margin: 0 auto;
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 30px;
+      flex-basis: 25%;
+      align-items: center;
+
+      a {
+        margin: 0;
+        @include link(20px, $textColor1);
+        &.red {
+          font-weight: 800;
+        }
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+        a {
+          margin: 0;
+          margin-bottom: 10px;
+          @include link(20px, $textColor1);
+          &.red {
+            font-weight: 800 !important;
+          }
+        }
+      }
+      section.manga {
+        background-color: blue;
+        flex-basis: 70%;
+      }
+    }
+  }
+  &.another {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  img {
+    margin: 0 auto;
+    width: 50%;
+    aspect-ratio: 16/9;
+  }
 }
 
 @media screen and (min-width: 1050px) {
@@ -99,6 +243,14 @@ main {
       text-align: center;
       flex-basis: 30%;
     }
+  }
+}
+
+section.headerPage1 {
+  margin: 50px 0;
+  h2 {
+    font-size: 30px;
+    text-align: center;
   }
 }
 
@@ -168,8 +320,9 @@ main {
   background-color: $bgColor1;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 0 0 20px;
   border-radius: 20px;
+  overflow: hidden;
   flex-basis: 95%;
   transform: scale(1);
   transition: transform 500ms;
@@ -181,7 +334,7 @@ main {
   }
 
   img {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     aspect-ratio: 16/9;
   }
@@ -193,11 +346,13 @@ main {
     line-height: 1.5em;
     letter-spacing: 0.2em;
     margin-top: 10px;
+    padding: 0 10px;
     font-weight: 800;
   }
   h5 {
     color: $textColor1;
     font-size: $fs-600;
+    padding: 0 10px;
     text-align: center;
     line-height: 1.5em;
     letter-spacing: 0.2em;
