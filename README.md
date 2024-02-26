@@ -1,4 +1,4 @@
-# Projekty biblioteczki został utworzony za pomocą [Create React App](https://create-react-app.dev/) oraz Biblioteki [React Router 6]{https://reactrouter.com/en/main}
+# Projekty biblioteczki został utworzony za pomocą [Create React App](https://create-react-app.dev/) oraz Biblioteki [React Router 6](https://reactrouter.com/en/main)
 
 
 
