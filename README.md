@@ -1,4 +1,4 @@
-# Projekty biblioteczki został utworzony za pomocą [Create React App](https://create-react-app.dev/)
+# Projekty biblioteczki został utworzony za pomocą [Create React App](https://create-react-app.dev/) oraz Biblioteki [React Router 6]{https://reactrouter.com/en/main}
 
 
 
@@ -7,6 +7,10 @@
 `` npx create-react-app my-app ``
 
 Utworzenie nowego projektu
+
+`` npm install react-router-dom `` 
+
+Dodanie bibliteki react router do proəektu
 
 `` npm start `` 
 
@@ -23,3 +27,9 @@ Utworzenie wersji gotowej do umieszczenia na docelowym serwerze. Pliki projektu 
 `` npm install node-sass ``
 
 instaluje lokalnie sass/scss
+
+###### Znane błędy:
+
+projekt nie responsywny
+
+żle napisany kod strony zawierający listę książek co skutkuje błędami na podstronach
