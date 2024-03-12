@@ -28,8 +28,14 @@ Utworzenie wersji gotowej do umieszczenia na docelowym serwerze. Pliki projektu 
 
 instaluje lokalnie sass/scss
 
+##### Dane do loogowania
+
+adres email: aku@aku.pl
+
+hasło: qwerty
+
 ###### Znane błędy:
 
-projekt nie responsywny
+projekt nie jest responsywny (poprawić styylowanie)
 
-żle napisany kod strony zawierający listę książek co skutkuje błędami na podstronach
+
