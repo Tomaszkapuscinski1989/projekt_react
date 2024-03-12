@@ -1,18 +1,22 @@
-import { useParams, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useLoaderData } from 'react-router-dom';
 import { collection } from './books';
 
-export const BookMore = () => {
-  const param = useParams();
-  const location = useLocation();
-  console.log(location);
+export function loader2(props) {
+  const { params } = props;
 
   const bookMore = collection.filter((bb) => {
-    return bb.id === Number(param.id);
+    return bb.id === Number(params.id);
   });
+  return bookMore;
+}
+
+export const BookMore = () => {
+  const location = useLocation();
+  const bookMore = useLoaderData();
 
   const { title, author, year, city, publishingHouse, img } = bookMore[0];
   const filter = location.state?.search || '';
-  console.log(filter);
+
   return (
     <main className='BookMorePage'>
       <img src={img} alt={title} />

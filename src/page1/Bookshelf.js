@@ -1,23 +1,54 @@
 import { useSearchParams } from 'react-router-dom';
 import Book from './Book';
 import { useGContext } from './Contex';
-import { collection } from './books';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-function Bookshelf() {
+function Bookshelf(props) {
+  const { dane } = props;
+
   function sortStr(a, b) {
     return a.title.localeCompare(b.title);
   }
 
-  collection.sort(sortStr);
+  dane.sort(sortStr);
 
-  const [Books, setBooks] = useState(collection);
-  const [List, setList] = useState(false);
+  const [Books, setBooks] = useState(dane);
+
   const { setName } = useGContext();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  let newCollection = [];
+  const titleFilter = searchParams.get('title');
+  const authorFilter = searchParams.get('author');
+  const publishingHouseFilter = searchParams.get('publishingHouse');
+
+  let filterName = '';
+  filterName = titleFilter ? `${filterName} ${titleFilter}` : `${filterName}`;
+  filterName = authorFilter ? `${filterName} ${authorFilter}` : `${filterName}`;
+  filterName = publishingHouseFilter
+    ? `${filterName} ${publishingHouseFilter}`
+    : `${filterName}`;
+  //console.log(filterName);
+
+  let newCollection = Books;
+
+  newCollection = titleFilter
+    ? newCollection.filter(
+        (bb) => bb.title.toLowerCase() === titleFilter.toLowerCase()
+      )
+    : newCollection;
+  newCollection = authorFilter
+    ? newCollection.filter(
+        (bb) => bb.author.toLowerCase() === authorFilter.toLowerCase()
+      )
+    : newCollection;
+  newCollection = publishingHouseFilter
+    ? newCollection.filter(
+        (bb) =>
+          bb.publishingHouse.toLowerCase() ===
+          publishingHouseFilter.toLowerCase()
+      )
+    : newCollection;
 
   const searchFunction = (key, value) => {
     setSearchParams((prevParams) => {
@@ -32,10 +63,10 @@ function Bookshelf() {
     const typeFilter = searchParams.get(key);
 
     newCollection = typeFilter
-      ? collection.filter((b) => {
+      ? Books.filter((b) => {
           return b[key].toLowerCase() === typeFilter.toLowerCase();
         })
-      : collection;
+      : dane;
   };
 
   const newArray1 = (number) => {
@@ -50,7 +81,7 @@ function Bookshelf() {
       bar1 = document.querySelector('#bar3');
       searchFunction('publishingHouse', bar1.value);
     }
-    setName(bar1.value);
+    setName(filterName);
 
     newCollection.sort(sortStr);
 
@@ -62,9 +93,9 @@ function Bookshelf() {
   };
 
   const newArray2 = () => {
-    collection.sort(sortStr);
-    setBooks(collection);
-    setList(false);
+    dane.sort(sortStr);
+    setBooks(dane);
+
     setName('');
     document.querySelector('#bar1').value = '';
     document.querySelector('#bar2').value = '';
@@ -78,11 +109,6 @@ function Bookshelf() {
       return prevParams;
     });
   };
-  useEffect(() => {
-    if (!Books.length) {
-      setList(true);
-    }
-  }, [Books]);
 
   return (
     <main>
@@ -113,10 +139,10 @@ function Bookshelf() {
           Wyczyść filtry
         </button>
       </section>
-      <h3>Ilość wyników: {Books.length}</h3>
-      {!List ? (
+      <h3>Ilość wyników: {newCollection.length}</h3>
+      {Books.length ? (
         <section className='Bookshelf'>
-          {Books.map((book) => {
+          {newCollection.map((book) => {
             const state = { search: `?${searchParams.toString()}` };
             return <Book params={book} params2={state} key={book.id} />;
           })}

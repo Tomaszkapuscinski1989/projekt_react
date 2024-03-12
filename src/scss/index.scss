@@ -104,7 +104,7 @@ main {
     text-align: center;
     line-height: 1.5em;
     letter-spacing: 0.2em;
-    margin-top: 10px;
+    margin: 20px 0;
     font-weight: 800;
   }
   section {
@@ -168,6 +168,9 @@ main {
       text-align: center;
       line-height: 1.5;
     }
+    a {
+      @include link(20px, $textColor1);
+    }
   }
   &.mainManga {
     margin: 0 auto;
@@ -228,6 +231,32 @@ main {
     margin: 0 auto;
     width: 50%;
     aspect-ratio: 16/9;
+  }
+  &.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      color: $textColor1;
+      font-size: $fs-800;
+      text-align: center;
+      line-height: 1.5em;
+      letter-spacing: 0.2em;
+      margin-top: 10px;
+      font-weight: 800;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      input {
+        width: 70%;
+      }
+      button {
+        width: 70%;
+      }
+    }
   }
 }
 
@@ -380,4 +409,24 @@ section.headerPage1 {
   .Book {
     flex-basis: 30%;
   }
+}
+
+main.page404,
+main.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 65vh;
+  a {
+    font-size: 30px;
+    padding: 0.5em 1em;
+    margin-top: 20px;
+  }
+}
+
+section.movies {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
 }
